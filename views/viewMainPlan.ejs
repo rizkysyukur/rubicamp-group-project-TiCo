@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>TES</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/sidebar.css' />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #000080">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#" style="border-radius: 7px; border: 0.5px solid #999;padding:6px;">TiCo</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="../../home">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="../../mainPlan">Plan</a>
+        </li>
+      </ul>
+
+      <div class="form-inline my-2 my-lg-0 nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-outline-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Saeful
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="../../account">Account</a>
+          <a class="dropdown-item" href="../../logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="sidenav">
+          <a class="active" href="../mainPlan">Main plan</a>
+          <ul>
+            <li><a class="active" href="#"><small>View main plan</small></a></li>
+          </ul>
+          <a href="../logActivity">Log Activity</a>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <br><br><br><br>
+        <div class="row">
+          <div class="col-sm-7">
+            <h5 class="text-center">Main Plan</h5>
+            <hr>
+            <div class="card card-dark">
+              <div class="card-body">
+                <p><b> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike><%= data.title %></strike></span> <% }else{ %> <a href="../../checkMainPlan/<%= data.id %>"><small>done</small></a> <%= data.title%>  <% } %>  </b></p>
+                <ul style="font-size: 14px">
+                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Type : <%= data.type %></strike></span> <% }else{ %> Type : <%= data.type %> <% } %> </li>
+                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Purpose : <%= data.purpose %></strike></span> <% }else{ %> Purpose : <%= data.purpose %> <% } %> </li>
+                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Startdate : <%= data.startdate %></strike></span> <% }else{ %> Startdate : <%= data.startdate %> <% } %> </li>
+                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Type : <%= data.enddate %></strike></span> <% }else{ %> Enddate : <%= data.enddate %> <% } %> </li>
+                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Status : <%= data.status %></strike></span> <% }else{ %> Status : <%= data.status %> <% } %> </li>
+                  <li> <% if(data.status=="Success"){ %> <span class="badge badge-primary"><strike>Notes : <%= data.notes %></strike></span> <% }else{ %> Notes : <%= data.notes %> <% } %> </li>
+                </ul>
+                <% if(sub1.length > 0){ %>
+                  <p><b>Sub plan</b></p>
+                  <% for(let i = 0; i < sub1.length; i++){ %>
+                    <ul style="font-size: 14px">
+                      <li> <b> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike><%= sub1[i].title %></strike></span> <% }else{ %> <a href="../../checkSubPlan/<%= data.id %>/<%= sub1[i].id %>"><small>done</small></a> <%= sub1[i].title%>  <% } %>  </b> </li>
+                      <ul style="font-size: 14px">
+                        <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Type : <%= sub1[i].type %></strike></span> <% }else{ %> Type : <%= sub1[i].type %> <% } %> </li>
+                        <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Status : <%= sub1[i].status %></strike></span> <% }else{ %> Status : <%= sub1[i].status %> <% } %> </li>
+                        <li> <% if(sub1[i].status=="Success"){ %> <span class="badge badge-primary"><strike>Notes : <%= sub1[i].notes %></strike></span> <% }else{ %> Notes : <%= sub1[i].notes %> <% } %> </li>
+                      </ul>
+                    </ul>
+                    <% } %>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <h5 class="text-center">Add sub plan</h5>
+                <hr>
+                <div class="card card-dark">
+                  <div class="card-body">
+                    <form action="/addSubPlan/<%= data.id %>" method="get">
+
+                      <div class="form-group">
+                        <label for="subplan">Sub Plan</label>
+                        <input type="text" class="form-control" id="subplan" name="title" placeholder="Enter your plan" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="type">Plan Type</label>
+                        <select name="type" class="form-control" id="type" required>
+                          <option>Choose plan type...</option>
+                          <option value"Monthly Plan">Monthly Plan</option>
+                          <option value"Weekly Plan">Weekly Plan</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="pnotes">Notes</label>
+                        <textarea class="form-control" id="pnotes" rows="8" name="notes" placeholder="Enter your notes" required></textarea>
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">Save</button>
+                      <a href="#" class="btn btn-warning">Back</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+
+      <br>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script>
+      $(document).ready(function(){
+        $('.dropdown-submenu a.plan').on("click", function(e){
+          $(this).next('ul').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        });
+      });
+      </script>
+    </body>
+    </html>

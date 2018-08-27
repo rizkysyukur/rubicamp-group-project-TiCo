@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>TES</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/sidebar.css' />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #000080">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#" style="border-radius: 7px; border: 0.5px solid #999;padding:6px;">TiCo</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="../../home">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="../../mainPlan">Plan</a>
+        </li>
+      </ul>
+
+      <div class="form-inline my-2 my-lg-0 nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-outline-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Saeful
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="../../account">Account</a>
+          <a class="dropdown-item" href="../../logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="sidenav">
+          <a class="active" href="../mainPlan">Main plan</a>
+          <a href="../logActivity">Log Activity</a>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <br><br><br><br>
+        <h4>Add main plan</h4>
+        <form action="../addMainPlan" method="post">
+          <div class="form-group">
+            <label for="title">Plan</label>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Enter your plan" required>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="type">Plan Type</label>
+                <select name="type" class="form-control" id="type" required>
+                  <option>Choose plan type...</option>
+                  <option value"Years Plan">Years Plan</option>
+                  <option value"Monthly Plan">Monthly Plan</option>
+                  <option value"Weekly Plan">Weekly Plan</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="purpose">Purpose</label>
+                <select name="purpose" class="form-control" id="purpose" required>
+                  <option>Choose purpose...</option>
+                  <option value"Self Improvment">Self Improvment</option>
+                  <option value"Family">Family</option>
+                  <option value"Social">Social</option>
+                </select>
+              </div>
+
+              <label for="startdate">Date</label>
+              <div class="form-row align-items-center" >
+                <div class="col-auto">
+                  <input name="startdate" type="date" class="form-control" id="startdate" required>
+                </div>
+                <div class="col-auto">
+                  <label for="enddate">to</label>
+                </div>
+                <div class="col-auto">
+                  <input name="enddate" type="date" class="form-control" id="enddate" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="notes">Notes</label>
+                <textarea name="notes" class="form-control" id="notes" rows="8" placeholder="Enter your notes" required></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="float:right">Save</button>
+        </form>
+        <br><br><hr>
+        <h4>List of main plan</h4>
+        <table class="table table-hover table-striped table-light">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Id</th>
+              <th scope="col">Plan</th>
+              <th scope="col">Type</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">End Date</th>
+              <th scope="col">Purpose</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < plans.length; i++){ %>
+              <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= plans[i].id %></td>
+                <td><%= plans[i].title %></td>
+                <td><%= plans[i].type %></td>
+                <td><%= util.formatDate(plans[i].startdate) %></td>
+                <td><%= util.formatDate(plans[i].enddate) %></td>
+                <td><%= plans[i].purpose %></td>
+                <td><%= plans[i].notes %></td>
+                <td><%= plans[i].status %></td>
+                <td>
+                  <a href="../../viewMainPlan/<%= plans[i].id %>" class="btn btn-primary">View</a>
+                  <a href="../../editMainPlan/<%= plans[i].id %>" class="btn btn-info">Edit</a>
+                  <a href="../../deleteMainPlan/<%= plans[i].id %>" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+              <% } %>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div><br><br>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+      $('.dropdown-submenu a.plan').on("click", function(e){
+        $(this).next('ul').toggle();
+        e.stopPropagation();
+        e.preventDefault();
+      });
+    });
+    </script>
+  </body>
+  </html>

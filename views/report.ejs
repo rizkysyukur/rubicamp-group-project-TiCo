@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>TES</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/sidebar.css' />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #000080">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#" style="border-radius: 7px; border: 0.5px solid #999;padding:6px;">TiCo</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="../../home">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="../../mainPlan">Plan</a>
+        </li>
+      </ul>
+
+      <div class="form-inline my-2 my-lg-0 nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-outline-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Saeful
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="../../account">Account</a>
+          <a class="dropdown-item" href="../../logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="sidenav">
+          <a href="../mainPlan">Main plan</a>
+          <a href="../dailyActivity">Daily Activity</a>
+          <a href="../logActivity">Log Activity</a>
+          <a class="active" href="../report">Report</a>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <br><br><br><br>
+        <h3 class="text-center"><b>PROGRESS EVALUATION</b></h3><br><br>
+
+        <form>
+          <div class="form-group">
+            <label for="ptype">Main Plan</label>
+            <select class="form-control" id="ptype" required>
+              <option>- Main Plan</option>
+              <option value"Years Plan">Years Plan</option>
+              <option value"Monthly Plan">Monthly Plan</option>
+              <option value"Weekly Plan">Weekly Plan</option>
+            </select>
+          </div>
+
+          <label for="startdate"></label>
+          <div class="form-row align-items-center">
+            <div class="col-auto">
+              <input type="date" class="form-control" id="startdate">
+            </div>
+            <div class="col-auto">
+              <label for="enddate">to</label>
+            </div>
+            <div class="col-auto">
+              <input type="date" class="form-control" id="enddate">
+            </div>
+          </div><br>
+
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <br><br><h5 class="text-center">Remains x Years, x Month, x Week</h5><br>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+          </div>
+        </div>
+        <br><br><h5 class="text-center">Years Planning from Start date until End date</h5><br><br>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <br><br><h5 class="text-center">Remains x Month, x Week</h5><br>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              </div>
+            </div>
+            <br><br><h5 class="text-center">Years Planning from Start date until End date</h5><br>
+
+          </div>
+          <div class="col-sm-6">
+            <br><br><h5 class="text-center">Remains x Week, x Day</h5><br>
+            <div class="progress">
+            </div>
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            </div>
+            <br><br><h5 class="text-center">Years Planning from Start date until End date</h5><br>
+
+          </div>
+        </div>
+
+        <br><br><h3 class="text-center"><b>PROGRESS EVALUATION</b></h3><br><br>
+        <table class="table table-hover table-striped table-light">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Plan</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">End Date</th>
+              <th scope="col">Status Plan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Shopping</td>
+              <td>01/08/2018</td>
+              <td>31/08/2018</td>
+              <td>On the way</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Mark</td>
+              <td>01/08/2018</td>
+              <td>31/08/2018</td>
+              <td>Done</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Mark</td>
+              <td>01/08/2018</td>
+              <td>31/08/2018</td>
+              <td>Done</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div id="myfirstchart" style="height: 250px;"></div><hr>
+        <h6 class="text-center">Grafik Type of Plan and Purpose</h6>
+
+      </div>
+    </div>
+  </div><br><br><br>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    $('.dropdown-submenu a.plan').on("click", function(e){
+      $(this).next('ul').toggle();
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  });
+  </script>
+  <script type="text/javascript">
+  Morris.Bar({
+    element: 'myfirstchart',
+    data: [
+      { y: '2014', a: 50, b: 40, c: 65 },
+      { y: '2015', a: 75, b: 65, c: 65 },
+      { y: '2016', a: 50, b: 40, c: 65 },
+      { y: '2017', a: 75, b: 65, c: 65 },
+      { y: '2018', a: 90, b: 90, c: 65 }
+    ],
+    xkey: 'y',
+    ykeys: ['a', 'b' , 'c'],
+    labels: ['Series A', 'Series B', 'Series C']
+  });
+  </script>
+</body>
+</html>

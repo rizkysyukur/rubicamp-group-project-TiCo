@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TiCo</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <% if (message.length > 0) { %>
+      <div class="alert alert-danger"><%= message %></div>
+      <% } %>
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+
+          <h1 class="text-center">Welcome to TiCo</h1>
+          <hr>
+          <h3 class="text-center">Login With</h3><br>
+
+          <form class="form-conatiner" action="/login" method="post">
+
+            <div class="form-group">
+              <label for="email">Username or Email</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Username or Email">
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div><br>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+
+          </form>
+
+          <a href="/signup" class="text-center">Don't have account ? Sign up</a><hr>
+          <h4 class="text-center">OR</h4><br>
+          <div class="text-center">
+            <a href="/auth/facebook" class="fa fa-facebook"></a>
+            <a href="/auth/twitter" class="fa fa-twitter"></a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+</body>
+</html>
